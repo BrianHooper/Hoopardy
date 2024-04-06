@@ -37,11 +37,10 @@ body {
 #game-board {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(5, 1fr) 75px;
+    grid-template-rows: repeat(5, 120px) 75px;
     grid-column-gap: 20px;
     grid-row-gap: 20px;
-    width: 1280px;
-    height: 720px;
+    width: 1200px;
 }
 
 .card {
@@ -149,3 +148,65 @@ body {
     color: rgba(214, 159, 76, 0.25);
     text-shadow: 6px 3px 2px rgba(0, 0, 0, 0.5);
 }
+
+.score-box {
+    color: white;
+    font-size: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px 0px;
+    letter-spacing: 1px;
+    font-family: 'ITC Korinna';
+}
+
+.score-points-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.score-points-button {
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    background-color: #D69F4C;
+    box-sizing: border-box;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    cursor: pointer;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.score-points-minus {
+    margin-left: 10px;
+}
+
+.score-points-plus {
+    margin-right: 10px;
+}
+
+.score-name-container {
+    display: flex;
+    width: 100%;
+    position: relative;
+    justify-content: center;
+}
+
+.score-name-edit {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+  }
