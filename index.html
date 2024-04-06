@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hoopardy</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="page">
+        <div id="header">
+            HOOPARDY!
+        </div>
+        <div id="game-board">
+            <div class="card category">A</div>
+            <div class="card category">B</div>
+            <div class="card category">C</div>
+            <div class="card category">D</div>
+
+            <div class="card points-box" id="prize-01">
+                <div class="button-points" onclick="showz(this)">
+                    <div class="button-points-text">200</div>
+                </div>
+                <div class="question-card question-card-hidden" onclick="hide(this)">
+                    <div class="clue-card">
+                        WHAT ITEM DID THE HOOPERS PURCHASE INSTEAD OF TAKING BRIAN AND KELSI TO DISNEYLAND?
+                    </div>
+                </div>
+            </div>
+
+            <div class="card points-box" id="prize-02">
+                <div class="button-points" onclick="showz(this)">
+                    <div class="button-points-text">200</div>
+                </div>
+                <div class="question-card question-card-hidden" onclick="hide(this)">
+                    <div class="clue-card">
+                        WHAT WAS GRANDMAS NAME?
+                        <img src="images/grandma.png"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card points-box" id="prize-03">
+                <div class="button-points" onclick="showz(this)">
+                    <div class="button-points-text">200</div>
+                </div>
+                <div class="question-card question-card-hidden" onclick="hide(this)">
+                    <div class="clue-card">
+                        WHAT HALLOWEEN COSTUME DID BRIAN WEAR THE YEAR KELSI WAS PRINCESS JASMINE?
+                    </div>
+                </div>
+            </div>
+
+            <div class="card points-box" id="prize-04">
+                <div class="button-points" onclick="showz(this)">
+                    <div class="button-points-text">200</div>
+                </div>
+                <div class="question-card question-card-hidden" onclick="hide(this)">
+                    <div class="clue-card">
+                        WHAT WAS OUR CHILDHOOD DOGS NAME?
+                    <img src="images/dog.jpg"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card points-box" id="prize-05">
+                <div class="button-points" onclick="showz(this)">
+                    <div class="button-points-text">400</div>
+                </div>
+                <div class="question-card question-card-hidden" onclick="hide(this)">
+                    <div class="clue-card">
+                        WHAT WAS KELSIS FIRST CAR?
+                    </div>
+                </div>
+            </div>
+
+            <div class="card points-box" id="prize-06">
+                <div class="button-points" onclick="showz(this)">
+                    <div class="button-points-text">400</div>
+                </div>
+                <div class="question-card question-card-hidden" onclick="hide(this)">
+                    <div class="clue-card">
+                        WHAT WAS UNCLE ERNIES JOB?
+                    </div>
+                </div>
+            </div>
+
+            <div class="card points-box" id="prize-07">
+                <div class="button-points" onclick="showz(this)">
+                    <div class="button-points-text">400</div>
+                </div>
+                <div class="question-card question-card-hidden" onclick="hide(this)">
+                    <div class="clue-card">
+                    </div>
+                </div>
+            </div>
+
+            <div class="card points-box" id="prize-08">
+                <div class="button-points" onclick="showz(this)">
+                    <div class="button-points-text">400</div>
+                </div>
+                <div class="question-card question-card-hidden" onclick="hide(this)">
+                    <div class="clue-card">
+                        WHAT ITEM DID ANDY USE TO CATCH TEENAGE BRIAN SNEAKING OUT?
+                    </div>
+                </div>
+            </div>
+
+            <div class="card points-box" id="prize-09">
+                <div class="button-points" onclick="showz(this)">
+                    <div class="button-points-text">600</div>
+                </div>
+                <div class="question-card question-card-hidden" onclick="hide(this)">
+                    <div class="clue-card">
+                        WHAT IS THE NAME OF THE TOWN WHERE ANDY AND NINA LIVE?
+                    </div>
+                </div>
+            </div>
+
+            <div class="card points-box" id="prize-10">
+                <div class="button-points" onclick="showz(this)">
+                    <div class="button-points-text">600</div>
+                </div>
+                <div class="question-card question-card-hidden" onclick="hide(this)">
+                    <div class="clue-card">
+                    </div>
+                </div>
+            </div>
+
+            <div class="card points-box" id="prize-11">
+                <div class="button-points" onclick="showz(this)">
+                    <div class="button-points-text">600</div>
+                </div>
+                <div class="question-card question-card-hidden" onclick="hide(this)">
+                    <div class="clue-card">
+                    </div>
+                </div>
+            </div>
+
+            <div class="card points-box" id="prize-12">
+                <div class="button-points" onclick="showz(this)">
+                    <div class="button-points-text">600</div>
+                </div>
+                <div class="question-card question-card-hidden" onclick="hide(this)">
+                    <div class="clue-card">
+                        THIS NUMBER IS DEFINED AS THE AMOUNT OF PARTICLES OF ANY SUBSTANCE CONTAINED IN ONE MOLE
+                    </div>
+                </div>
+            </div>
+
+            <div class="card points-box" id="prize-13">
+                <div class="button-points" onclick="showz(this)">
+                    <div class="button-points-text">800</div>
+                </div>
+                <div class="question-card question-card-hidden" onclick="hide(this)">
+                    <div class="clue-card">
+                    </div>
+                </div>
+            </div>
+
+            <div class="card points-box" id="prize-14">
+                <div class="button-points" onclick="showz(this)">
+                    <div class="button-points-text">800</div>
+                </div>
+                <div class="question-card question-card-hidden" onclick="hide(this)">
+                    <div class="clue-card">
+                    </div>
+                </div>
+            </div>
+
+            <div class="card points-box" id="prize-15">
+                <div class="button-points" onclick="showz(this)">
+                    <div class="button-points-text">800</div>
+                </div>
+                <div class="question-card question-card-hidden" onclick="hide(this)">
+                    <div class="clue-card">
+                    </div>
+                </div>
+            </div>
+
+            <div class="card points-box" id="prize-16">
+                <div class="button-points" onclick="showz(this)">
+                    <div class="button-points-text">800</div>
+                </div>
+                <div class="question-card question-card-hidden" onclick="hide(this)">
+                    <div class="clue-card">
+                    </div>
+                </div>
+            </div>
+
+            <div class="card score-box" id="score-1">
+                AAB
+            </div>
+            
+        </div>
+    </div>
+	<script src="index.js"></script>
+  </body>
+</html>

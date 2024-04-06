@@ -1,0 +1,151 @@
+@font-face {
+    font-family: "Gyparody Rg";
+    src:url("fonts/gyparody rg.ttf");
+}
+
+@font-face {
+    font-family: "Swiss 921 BT";
+    src:url("fonts/Swiss 921 BT.ttf");
+}
+
+
+@font-face {
+    font-family: ITC Korinna;
+    src:url("fonts/ITC Korinna Regular.otf");
+}
+
+
+body {
+    background-color: #333333;
+    font-family: "Swiss 921 BT";
+}
+
+#header {
+    font-family: "Gyparody Rg";
+    font-size: 96px;
+    color: white;
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: black;
+}
+
+#page {
+    display: flex;  
+    flex-direction: column;
+    align-items: center;
+}
+
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr) 75px;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    width: 1280px;
+    height: 720px;
+}
+
+.card {
+    background-color: #010A78;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.category {
+    margin-bottom: 10px;
+    font-size: 36px;
+    color: #ffffff;
+}
+
+.points-box {
+    color: #D69F4C;
+    font-size: 96px;
+    text-shadow: 6px 3px 2px rgba(0, 0, 0, 1);
+    cursor: pointer;
+}
+
+.clue-overlay {
+    z-index: 1;
+    position: absolute;
+    top: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;  
+    background-color: rgba(0, 0, 0, 0.95);
+    cursor: pointer;
+}
+
+.clue-card {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 96px;
+    background-color: #010A78;  
+    color: #ffffff;
+    border-radius: 30px;
+    cursor: pointer;
+    padding: 50px;
+    text-align: center;
+    font-family: ITC Korinna;
+    flex-direction: column;
+}
+
+.clue-card > img {
+    height: auto;
+    max-width: calc(100% - 50px);
+    object-fit: contain;
+}
+
+.question-card {
+    z-index: 1;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;  
+    background-color: rgba(0, 0, 0, 0.95);
+    cursor: pointer;
+}
+
+.question-card-hidden {
+    display: none;
+}
+
+.question-card-visible {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-points {
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
+
+.button-points-text {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+.button-points-text-hidden {
+    display: none;
+}
+
+.button-points-text-visible {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-points-faded {
+    color: rgba(214, 159, 76, 0.25);
+    text-shadow: 6px 3px 2px rgba(0, 0, 0, 0.5);
+}
