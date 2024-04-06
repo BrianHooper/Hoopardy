@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
+<div id="start-overlay">
+    <div id="start-button">
+        START
+    </div>
+</div>
+
     <div id="page">
         <div id="header">
             HOOPARDY!
@@ -189,60 +195,24 @@
                 </div>
             </div>
 
-            <div class="card score-box">
-                <div class="score-name-container">
-                    <div class="score-name">
-                        TEAM 1
-                    </div>
-                    <div class="score-name-edit" onclick="editname(this)">🖉</div>
-                </div>
-                <div class="score-points-container">
-                    <div class="score-points-button score-points-minus" onclick="rempoints(this)">-</div>
-                    <div class="score-points">0</div>
-                    <div class="score-points-button score-points-plus" onclick="addpoints(this)">+</div>
-                </div>
+            <div class="card score-box" onclick="editname(this)">
+                <div class="score-name">TEAM 1</div>
+                <div class="score-points" id="score-points-1">0</div>
             </div>
 
-            <div class="card score-box">
-                <div class="score-name-container">
-                    <div class="score-name">
-                        TEAM 2
-                    </div>
-                    <div class="score-name-edit" onclick="editname(this)">🖉</div>
-                </div>
-                <div class="score-points-container">
-                    <div class="score-points-button score-points-minus" onclick="rempoints(this)">-</div>
-                    <div class="score-points">0</div>
-                    <div class="score-points-button score-points-plus" onclick="addpoints(this)">+</div>
-                </div>
+            <div class="card score-box" onclick="editname(this)">
+                <div class="score-name">TEAM 2</div>
+                <div class="score-points" id="score-points-2">0</div>
             </div>
 
-            <div class="card score-box">
-                <div class="score-name-container">
-                    <div class="score-name">
-                        TEAM 3
-                    </div>
-                    <div class="score-name-edit" onclick="editname(this)">🖉</div>
-                </div>
-                <div class="score-points-container">
-                    <div class="score-points-button score-points-minus" onclick="rempoints(this)">-</div>
-                    <div class="score-points">0</div>
-                    <div class="score-points-button score-points-plus" onclick="addpoints(this)">+</div>
-                </div>
+            <div class="card score-box" onclick="editname(this)">
+                <div class="score-name">TEAM 3</div>
+                <div class="score-points" id="score-points-3">0</div>
             </div>
 
-            <div class="card score-box">
-                <div class="score-name-container">
-                    <div class="score-name">
-                        TEAM 4
-                    </div>
-                    <div class="score-name-edit" onclick="editname(this)">🖉</div>
-                </div>
-                <div class="score-points-container">
-                    <div class="score-points-button score-points-minus noselect" onclick="rempoints(this)">-</div>
-                    <div class="score-points">0</div>
-                    <div class="score-points-button score-points-plus" onclick="addpoints(this)">+</div>
-                </div>
+            <div class="card score-box" onclick="editname(this)">
+                <div class="score-name">TEAM 4</div>
+                <div class="score-points" id="score-points-4">0</div>
             </div>
             
         </div>

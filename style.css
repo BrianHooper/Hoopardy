@@ -20,6 +20,25 @@ body {
     font-family: "Swiss 921 BT";
 }
 
+#start-overlay {
+    position: fixed;
+    background-color: #333333;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 96px;
+    font-family: 'Swiss 921 BT';
+    z-index: 10;
+}
+
+#start-button {
+    cursor: pointer;
+}
+
 #header {
     font-family: "Gyparody Rg";
     font-size: 96px;
@@ -157,48 +176,18 @@ body {
     gap: 10px 0px;
     letter-spacing: 1px;
     font-family: 'ITC Korinna';
+    cursor: pointer;
 }
 
-.score-points-container {
+.score-points {
     display: flex;
     justify-content: space-between;
-    width: 100%;
 }
 
-.score-points-button {
-    width: 30px;
-    height: 30px;
-    border: 1px solid black;
-    background-color: #D69F4C;
-    box-sizing: border-box;
-    border-radius: 3px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    cursor: pointer;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-}
-
-.score-points-minus {
-    margin-left: 10px;
-}
-
-.score-points-plus {
-    margin-right: 10px;
-}
-
-.score-name-container {
+.score-name {
     display: flex;
     width: 100%;
-    position: relative;
     justify-content: center;
-}
-
-.score-name-edit {
-    position: absolute;
-    right: 10px;
-    cursor: pointer;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .noselect {

@@ -14,8 +14,7 @@ function hide(card) {
 }
 
 function editname(card) {
-    const parent = card.parentNode;
-    const nameElem = parent.querySelector(".score-name");
+    const nameElem = card.querySelector(".score-name");
     const existingName = nameElem.innerText;
     const teamName = prompt("Team name", existingName);
     nameElem.innerText = teamName;
@@ -24,9 +23,7 @@ function editname(card) {
 function addpoints(card) {
     const parent = card.parentNode;
     const pointsElem = parent.querySelector(".score-points");
-    let existingPoints = Number(pointsElem.innerText);
-    existingPoints += 200;
-    pointsElem.innerText = existingPoints;
+    addpointsdirect(pointsElem);
 }
 
 function rempoints(card) {
@@ -38,3 +35,49 @@ function rempoints(card) {
         pointsElem.innerText = existingPoints;
     }
 }
+
+function rempointsdirect(card) {
+    let existingPoints = Number(card.innerText);
+    existingPoints -= 200;
+    if (existingPoints >= 0) {
+        card.innerText = existingPoints;
+    }
+}
+
+function addpointsdirect(card) {
+    let existingPoints = Number(card.innerText);
+    existingPoints += 200;
+    card.innerText = existingPoints;
+}
+
+function remstartcard() {
+    const card = document.querySelector("#start-overlay");
+    card.style.visibility = "hidden";
+}
+
+document.addEventListener("keydown", function (e) {
+    if (e.code === "Enter") {
+      remstartcard();
+    } else if (e.code === "Digit1") {
+        rempointsdirect(document.querySelector("#score-points-1"));
+    } else if (e.code === "Digit2") {
+        addpointsdirect(document.querySelector("#score-points-1"));
+    } else if (e.code === "Digit3") {
+        rempointsdirect(document.querySelector("#score-points-2"));
+    } else if (e.code === "Digit4") {
+        addpointsdirect(document.querySelector("#score-points-2"));
+    } else if (e.code === "Digit5") {
+        rempointsdirect(document.querySelector("#score-points-3"));
+    } else if (e.code === "Digit6") {
+        addpointsdirect(document.querySelector("#score-points-3"));
+    } else if (e.code === "Digit7") {
+        rempointsdirect(document.querySelector("#score-points-4"));
+    } else if (e.code === "Digit8") {
+        addpointsdirect(document.querySelector("#score-points-4"));
+    }
+  });
+  
+  // Your validation function
+  function validate(e) {
+    alert("enter");
+  }
