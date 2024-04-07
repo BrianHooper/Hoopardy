@@ -9,8 +9,9 @@ function showz(card) {
 }
 
 function hide(card) {
-    card.classList.remove('question-card-visible');
-    card.classList.add('question-card-hidden');
+    const parent = card.parentNode.parentNode;
+    parent.classList.remove('question-card-visible');
+    parent.classList.add('question-card-hidden');
 }
 
 function editname(card) {
