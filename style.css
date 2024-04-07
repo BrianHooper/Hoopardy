@@ -33,6 +33,7 @@ body {
     font-size: 96px;
     font-family: 'Swiss 921 BT';
     z-index: 10;
+    visibility: hidden;
 }
 
 #start-button {
@@ -81,7 +82,6 @@ body {
     color: #D69F4C;
     font-size: 96px;
     text-shadow: 6px 3px 2px rgba(0, 0, 0, 1);
-    cursor: pointer;
 }
 
 .clue-overlay {
@@ -115,7 +115,7 @@ body {
 
 .clue-card > img {
     height: auto;
-    max-width: calc(100% - 50px);
+    max-width: calc(60% - 50px);
     object-fit: contain;
 }
 
@@ -127,16 +127,14 @@ body {
     width: 100%;
     height: 100%;  
     background-color: rgba(0, 0, 0, 0.95);
-}
-
-.question-card-hidden {
-    display: none;
-}
-
-.question-card-visible {
     display: flex;
     justify-content: center;
     align-items: center;
+    visibility: hidden;
+}
+
+.question-card-visible {
+    visibility: visible;
 }
 
 .clue-button {
@@ -168,6 +166,7 @@ body {
     width: 100%;
     height: 100%;
     display: flex;
+    cursor: pointer;
   }
 
 .button-points-text {

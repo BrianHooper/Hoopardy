@@ -2,16 +2,46 @@ function showz(card) {
     var t = card.querySelector(".button-points-text");
     t.classList.toggle("button-points-faded");
 
-    t.classList.add("button-price-text-hidden");
-    t.classList.remove("button-price-text-visible");
-    var s = card.parentNode.querySelector(".question-card");
-    s.classList = ["question-card question-card-visible"];
+    var s = card.parentNode.querySelector(".clue");
+    s.classList.add("question-card-visible");
+}
+
+function showquestion(card) {
+    var questionCard = card.querySelector(".clue");
+    console.log(questionCard);
+    questionCard.classList.add("question-card-visible");
+
+    var button = card.querySelector(".button-points");
+    button.classList.toggle("button-points-faded");
+}
+
+function hidecard(card) {
+    var questionCard = card.querySelector(".clue");
+    if (questionCard) {
+        questionCard.classList.remove("question-card-visible");
+    }
+
+    var answerCard = card.querySelector(".answer");
+    if (answerCard) {
+        answerCard.classList.remove("question-card-visible");
+    }
 }
 
 function hide(card) {
-    const parent = card.parentNode.parentNode;
-    parent.classList.remove('question-card-visible');
-    parent.classList.add('question-card-hidden');
+    const parent = card.parentNode;
+    parent.classList.remove("question-card-visible");
+}
+
+function showanswer(card) {
+    var questionCard = card.querySelector(".clue");
+    if (questionCard) {
+        questionCard.classList.remove("question-card-visible");
+    }
+
+    var answerCard = card.querySelector(".answer");
+    if (answerCard) {
+        answerCard.classList.add("question-card-visible");
+    }
 }
 
 function editname(card) {
@@ -77,8 +107,27 @@ document.addEventListener("keydown", function (e) {
         addpointsdirect(document.querySelector("#score-points-4"));
     }
   });
-  
-  // Your validation function
-  function validate(e) {
-    alert("enter");
-  }
+
+document.querySelectorAll(".points-box").forEach(function(card) {
+    const qId = card.id;
+    const pointsButton = card.querySelector(".button-points");
+    pointsButton.addEventListener("click", function(){
+        showquestion(card);
+    }, false);
+    
+    const closeButtons = card.querySelectorAll(".close-button");
+    if (closeButtons) {
+        closeButtons.forEach(function(button) {
+            button.addEventListener("click", function(){
+                hidecard(card);
+            }, false);
+        });
+    }
+
+    const answerButton = card.querySelector(".answer-button");
+    if (answerButton) {
+        answerButton.addEventListener("click", function(){
+            showanswer(card);
+        }, false);
+    }
+});
