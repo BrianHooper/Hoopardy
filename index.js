@@ -1,18 +1,15 @@
-function showz(card) {
-    var t = card.querySelector(".button-points-text");
-    t.classList.toggle("button-points-faded");
-
-    var s = card.parentNode.querySelector(".clue");
-    s.classList.add("question-card-visible");
-}
-
 function showquestion(card) {
     var questionCard = card.querySelector(".clue");
     console.log(questionCard);
     questionCard.classList.add("question-card-visible");
 
-    var button = card.querySelector(".button-points");
-    button.classList.toggle("button-points-faded");
+    var pointsButton = card.querySelector(".button-points-text");
+    pointsButton.classList.toggle("button-points-faded");
+
+    document.querySelectorAll(".button-points-text").forEach(function(button) {
+        button.classList.remove("button-points-last-selected");
+    })
+    pointsButton.classList.add("button-points-last-selected");
 }
 
 function hidecard(card) {
@@ -25,11 +22,6 @@ function hidecard(card) {
     if (answerCard) {
         answerCard.classList.remove("question-card-visible");
     }
-}
-
-function hide(card) {
-    const parent = card.parentNode;
-    parent.classList.remove("question-card-visible");
 }
 
 function showanswer(card) {
@@ -49,22 +41,6 @@ function editname(card) {
     const existingName = nameElem.innerText;
     const teamName = prompt("Team name", existingName);
     nameElem.innerText = teamName;
-}
-
-function addpoints(card) {
-    const parent = card.parentNode;
-    const pointsElem = parent.querySelector(".score-points");
-    addpointsdirect(pointsElem);
-}
-
-function rempoints(card) {
-    const parent = card.parentNode;
-    const pointsElem = parent.querySelector(".score-points");
-    let existingPoints = Number(pointsElem.innerText);
-    existingPoints -= 200;
-    if (existingPoints >= 0) {
-        pointsElem.innerText = existingPoints;
-    }
 }
 
 function rempointsdirect(card) {
@@ -109,8 +85,7 @@ document.addEventListener("keydown", function (e) {
   });
 
 document.querySelectorAll(".points-box").forEach(function(card) {
-    const qId = card.id;
-    const pointsButton = card.querySelector(".button-points");
+    const pointsButton = card.querySelector(".button-points-text");
     pointsButton.addEventListener("click", function(){
         showquestion(card);
     }, false);

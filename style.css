@@ -33,7 +33,7 @@ body {
     font-size: 96px;
     font-family: 'Swiss 921 BT';
     z-index: 10;
-    visibility: hidden;
+    /* visibility: hidden; */
 }
 
 #start-button {
@@ -76,24 +76,6 @@ body {
     margin-bottom: 10px;
     font-size: 36px;
     color: #ffffff;
-}
-
-.points-box {
-    color: #D69F4C;
-    font-size: 96px;
-    text-shadow: 6px 3px 2px rgba(0, 0, 0, 1);
-}
-
-.clue-overlay {
-    z-index: 10;
-    position: absolute;
-    top: 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;  
-    background-color: rgba(0, 0, 0, 0.95);
 }
 
 .clue-card {
@@ -162,32 +144,23 @@ body {
     left: 20px;
 }
 
-.button-points {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    cursor: pointer;
-  }
-
 .button-points-text {
     text-align: center;
     width: 100%;
     height: 100%;
-}
-
-.button-points-text-hidden {
-    display: none;
-}
-
-.button-points-text-visible {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    color: #D69F4C;
+    font-size: 96px;
+    text-shadow: 6px 3px 2px rgba(0, 0, 0, 1);
+    cursor: pointer;
 }
 
 .button-points-faded {
     color: rgba(214, 159, 76, 0.25);
     text-shadow: 6px 3px 2px rgba(0, 0, 0, 0.5);
+}
+
+.button-points-last-selected {
+    text-decoration: underline;
 }
 
 .score-box {
@@ -211,13 +184,3 @@ body {
     width: 100%;
     justify-content: center;
 }
-
-.noselect {
-    -webkit-touch-callout: none; /* iOS Safari */
-      -webkit-user-select: none; /* Safari */
-       -khtml-user-select: none; /* Konqueror HTML */
-         -moz-user-select: none; /* Old versions of Firefox */
-          -ms-user-select: none; /* Internet Explorer/Edge */
-              user-select: none; /* Non-prefixed version, currently
-                                    supported by Chrome, Edge, Opera and Firefox */
-  }
