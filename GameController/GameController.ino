@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <string.h>
+#include <Wire.h> 
+#include <LiquidCrystal_I2C.h>
 
 #define NUMPINS 4
 #define ULONG_MAX 4294967295
@@ -14,13 +16,19 @@ char* words[NUMPINS];
 unsigned int globalDelayTimeMs = 5000;
 unsigned long globalTime = 0;
 
+LiquidCrystal_I2C lcd (32,16,2);
+
 void setup() {
+  Wire.begin();
   Serial.begin(9600);
   
   for(unsigned short i = 0; i < NUMPINS; i++) {
       pinMode(pins[i], INPUT);
   }
   pinMode(RESET_PIN, INPUT);
+  
+  lcd.init();
+  lcd.backlight();
 }
 
 char* intToString(int num) {
@@ -65,8 +73,7 @@ char* calcRank(int pinIdx) {
   return posPinA;
 }
 
-void resetCounter() {
-  Serial.println("Timer reset");
+void resetCounter() {  
   for(unsigned short i = 0; i < NUMPINS; i++) {
   lastPressed[i] = ULONG_MAX;
   }
@@ -87,10 +94,58 @@ void press(int pinIdx) {
   }
   
   char* joinedString = joinStrings(words);
-  Serial.println(joinedString); 
+  
+  //Serial.println(millis());
+  //lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print(joinedString);
+  //Serial.println(millis());
+  
+}
+
+void scanI2C() {
+  byte error, address;
+  int nDevices;
+ 
+  Serial.println("Scanning...");
+ 
+  nDevices = 0;
+  for(address = 1; address < 127; address++ )
+  {
+    // The i2c_scanner uses the return value of
+    // the Write.endTransmisstion to see if
+    // a device did acknowledge to the address.
+    Wire.beginTransmission(address);
+    error = Wire.endTransmission();
+ 
+    if (error == 0)
+    {
+      Serial.print("I2C device found at address 0x");
+      if (address<16)
+        Serial.print("0");
+      Serial.print(address,HEX);
+      Serial.println("  !");
+ 
+      nDevices++;
+    }
+    else if (error==4)
+    {
+      Serial.print("Unknown error at address 0x");
+      if (address<16)
+        Serial.print("0");
+      Serial.println(address,HEX);
+    }    
+  }
+  if (nDevices == 0)
+    Serial.println("No I2C devices found\n");
+  else
+    Serial.println("done\n");
+ 
+  delay(5000);           // wait 5 seconds for next scan
 }
 
 void loop() {
+  
   for(unsigned short i = 0; i < NUMPINS; i++) {
     if (digitalRead(pins[i]) == HIGH) {
       if (!pressed[i]) {
@@ -106,4 +161,7 @@ void loop() {
     resetCounter();
     delay(500);
   }
+  
+  
+  //scanI2C();
 }
