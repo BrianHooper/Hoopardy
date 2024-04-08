@@ -13,6 +13,8 @@ boolean pressed[] = {false, false, false, false};
 unsigned long lastPressed[] = {ULONG_MAX, ULONG_MAX, ULONG_MAX, ULONG_MAX}; 
 char* words[NUMPINS];
 
+boolean isCurrentlyPressed = false;
+
 unsigned int globalDelayTimeMs = 30 * 1000;
 unsigned long globalTime = 0;
 
@@ -77,14 +79,21 @@ char* calcRank(int pinIdx) {
 
 void resetCounter() {  
   for(unsigned short i = 0; i < NUMPINS; i++) {
-  lastPressed[i] = ULONG_MAX;
+    lastPressed[i] = ULONG_MAX;
   }
   lcd.clear();
   lcd.setCursor(0,0);
   lcd.print("Ready");
+  isCurrentlyPressed = false;
 }
 
 void press(int pinIdx) {
+  unsigned long currentTime = millis();
+  if (!isCurrentlyPressed) {
+    globalTime = currentTime;
+  }
+  isCurrentlyPressed = true;
+  
   if (lastPressed[pinIdx] != ULONG_MAX) {
     return;
   }
@@ -148,8 +157,7 @@ void scanI2C() {
 
 void loop() {
   unsigned long currentTime = millis();
-  if (currentTime - globalTime >= globalDelayTimeMs) {
-    globalTime = currentTime;
+  if (isCurrentlyPressed && currentTime - globalTime >= globalDelayTimeMs) {
     resetCounter();
   }  
   
