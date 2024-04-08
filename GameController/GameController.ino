@@ -8,12 +8,12 @@
 
 int RESET_PIN = 7;
 
-int pins[] = {10, 11, 12, 13};
+int pins[] = {13, 12, 11, 10};
 boolean pressed[] = {false, false, false, false};
 unsigned long lastPressed[] = {ULONG_MAX, ULONG_MAX, ULONG_MAX, ULONG_MAX}; 
 char* words[NUMPINS];
 
-unsigned int globalDelayTimeMs = 5000;
+unsigned int globalDelayTimeMs = 30 * 1000;
 unsigned long globalTime = 0;
 
 LiquidCrystal_I2C lcd (32,16,2);
@@ -29,6 +29,8 @@ void setup() {
   
   lcd.init();
   lcd.backlight();
+  lcd.setCursor(0,0);
+  lcd.print("Start");
 }
 
 char* intToString(int num) {
@@ -77,14 +79,14 @@ void resetCounter() {
   for(unsigned short i = 0; i < NUMPINS; i++) {
   lastPressed[i] = ULONG_MAX;
   }
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print("Ready");
 }
 
 void press(int pinIdx) {
-  unsigned long currentTime = millis();
-  
-  if (currentTime - globalTime >= globalDelayTimeMs) {
-    globalTime = currentTime;
-    resetCounter();
+  if (lastPressed[pinIdx] != ULONG_MAX) {
+    return;
   }
   
   lastPressed[pinIdx] = currentTime;
@@ -145,6 +147,11 @@ void scanI2C() {
 }
 
 void loop() {
+  unsigned long currentTime = millis();
+  if (currentTime - globalTime >= globalDelayTimeMs) {
+    globalTime = currentTime;
+    resetCounter();
+  }  
   
   for(unsigned short i = 0; i < NUMPINS; i++) {
     if (digitalRead(pins[i]) == HIGH) {

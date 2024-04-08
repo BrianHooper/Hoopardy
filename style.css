@@ -96,9 +96,9 @@ body {
 }
 
 .clue-card > img {
-    height: auto;
-    max-width: calc(60% - 50px);
     object-fit: contain;
+    max-width: calc(80% - 50px);
+    max-height: 80%;
 }
 
 .question-card {
@@ -183,4 +183,19 @@ body {
     display: flex;
     width: 100%;
     justify-content: center;
+}
+
+#avogadro {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    max-height: 50%;
+    align-items: center;
+    gap: 80px;
+}
+
+#avogadro > img{
+    object-fit: contain;
+    max-width: 40%;
+    max-height: 80%;
 }
