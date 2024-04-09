@@ -6,9 +6,9 @@
 #define NUMPINS 4
 #define ULONG_MAX 4294967295
 
-int RESET_PIN = 7;
+int RESET_PIN = 13;
 
-int pins[] = {13, 12, 11, 10};
+int pins[] = {9, 10, 11, 12};
 boolean pressed[] = {false, false, false, false};
 unsigned long lastPressed[] = {ULONG_MAX, ULONG_MAX, ULONG_MAX, ULONG_MAX}; 
 char* words[NUMPINS];
@@ -18,7 +18,7 @@ boolean isCurrentlyPressed = false;
 unsigned int globalDelayTimeMs = 30 * 1000;
 unsigned long globalTime = 0;
 
-LiquidCrystal_I2C lcd (32,16,2);
+LiquidCrystal_I2C lcd (0x27,16,2);
 
 void setup() {
   Wire.begin();
@@ -156,6 +156,7 @@ void scanI2C() {
 }
 
 void loop() {
+  
   unsigned long currentTime = millis();
   if (isCurrentlyPressed && currentTime - globalTime >= globalDelayTimeMs) {
     resetCounter();
