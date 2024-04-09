@@ -13,10 +13,25 @@ char *words[NUMPINS];
 
 boolean isCurrentlyPressed = false;
 
-unsigned int globalDelayTimeMs = 30 * 1000;
+unsigned int globalDelayTimeMs = 60 * 1000;
 unsigned long globalTime = 0;
 
 LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+void resetCounter()
+{
+    for (unsigned short i = 0; i < NUMPINS; i++)
+    {
+        lastPressed[i] = 0;
+    }
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("##### HOOPARDY #####");
+    lcd.setCursor(0, 2);
+    lcd.print("   A:  B:  C:  D:   ");
+    isCurrentlyPressed = false;
+}
+
 
 void setup()
 {
@@ -31,8 +46,7 @@ void setup()
 
     lcd.init();
     lcd.backlight();
-    lcd.setCursor(0, 0);
-    lcd.print("Start");
+    resetCounter();
 }
 
 char *intToString(int num)
@@ -90,25 +104,16 @@ void updateDisplay()
 {
     for (unsigned short i = 0; i < NUMPINS; i++)
     {
-        words[i] = calcRank(i);
+        //words[i] = calcRank(i);
+        lcd.setCursor(i * 2, 2);
+        lcd.print(String(calcRank(i)));
     }
 
     char *joinedString = joinStrings(words);
-    lcd.setCursor(0, 0);
-    lcd.print(joinedString);
+    //lcd.setCursor(0, 2);
+    //lcd.print(joinedString);
 }
 
-void resetCounter()
-{
-    for (unsigned short i = 0; i < NUMPINS; i++)
-    {
-        lastPressed[i] = 0;
-    }
-    lcd.clear();
-    lcd.setCursor(0, 0);
-    lcd.print("Ready");
-    isCurrentlyPressed = false;
-}
 
 void press(int pinIdx)
 {
@@ -125,7 +130,10 @@ void press(int pinIdx)
     isCurrentlyPressed = true;
     lastPressed[pinIdx] = currentTime;
 
-    updateDisplay();
+    lcd.setCursor((pinIdx + 1) * 4 + 1, 2);
+    lcd.print(String(calcRank(pinIdx)));
+
+    //updateDisplay();
 }
 
 void scanI2C()
