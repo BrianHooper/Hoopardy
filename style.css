@@ -33,7 +33,7 @@ body {
     font-size: 96px;
     font-family: 'Swiss 921 BT';
     z-index: 10;
-    /* visibility: hidden; */
+    visibility: hidden;
 }
 
 #start-button {
@@ -57,10 +57,15 @@ body {
 #game-board {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(5, 120px) 75px;
     grid-column-gap: 20px;
-    grid-row-gap: 20px;
     width: 1200px;
+}
+
+.game-column {
+    display: grid;
+    grid-template-rows: repeat(5, 120px) 75px;
+
+    grid-row-gap: 20px;
 }
 
 .card {
